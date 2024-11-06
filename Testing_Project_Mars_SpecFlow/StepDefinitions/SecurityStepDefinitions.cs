@@ -17,7 +17,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         public SecurityStepDefinitions(IWebDriver driver) { this.driver = driver; } 
 
         //log in
-        [When(@"I log into Project Mars website with email '([^']*)' & password as '([^']*)'")]
+        [When(@"I log into Project Mars website with email (.*) & password as (.*)")]
         public void GivenILogIntoProjectMarsWebsiteWithEmailPasswordAs(string email, string password)
         {
             logInObj.Login(driver, email, password);
@@ -29,7 +29,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
             Assert.That(logInObj.GetWarningMsg(driver).Contains("Confirm"), "Fail to valdidate username & password!");
         }
 
-        [When(@"I log into Project Mars website with existing account with email '([^']*)' & password as '([^']*)'")]
+        [When(@"I log into Project Mars website with existing account with email (.*) & password as (.*)")]
         public void GivenILogIntoProjectMarsWebsiteWithExistingAccountWithEmailPasswordAs(string email, string password)
         {
             logInObj.Login(driver, email, password);
@@ -43,7 +43,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         }
 
         //sign out
-        [When(@"I log into Project Mars website with exist account with email '([^']*)' & password '([^']*)'")]
+        [When(@"I log into Project Mars website with exist account with email (.*) & password (.*)")]
         public void GivenILogIntoProjectMarsWebsiteWithExistAccountWithEmailPassword(string email, string password)
         {
             logInObj.Login(driver, email, password);
@@ -62,7 +62,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         }
 
         //sign up
-        [When(@"I am trying to enter firstname as '([^']*)' lastname as '([^']*)' email as '([^']*)' & invalid password '([^']*)' without agree box ticked")]
+        [When(@"I am trying to enter firstname as (.*) lastname as (.*) email as (.*) & invalid password (.*) without agree box ticked")]
         public void WhenIAmTryingToEnterFirstnameAsLastnameAsEmailAsInvalidPasswordWithoutAgreeBoxTicked(string fname, string lname, string email, string pass)
         {
             joinObj.SignUp(driver, fname, lname, email, pass);
@@ -80,7 +80,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
             Assert.That(joinObj.RetriveWarningMsg(driver).Equals("Password must be at least 6 characters."), "Fail to Validate inputs!");
         }
 
-        [When(@"I am trying to enter firstname as '([^']*)' lastname as '([^']*)' email as '([^']*)' & invalid password '([^']*)'")]
+        [When(@"I am trying to enter firstname as (.*) lastname as (.*) email as (.*) & invalid password (.*)")]
         public void WhenIAmTryingToEnterFirstnameAsLastnameAsEmailAsInvalidPassword(string fname, string lname, string email, string pass)
         {
             joinObj.SignUp(driver, fname, lname, email, pass);
