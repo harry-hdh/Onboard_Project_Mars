@@ -1,5 +1,6 @@
 ﻿Feature: Security
 
+These are testing the log in, log out & sign up features of Mars Project website
 
 @Login
 Scenario: 01) Log in with invalid email & password
@@ -18,7 +19,7 @@ Scenario: 03) After LogIn user should be able to log out
 	Then I should be able to sign out successfully!
 
 @Join
-Scenario Outline: 4) Sing Up with invalid password and without agreement untick
+Scenario Outline: 04) Sing Up with invalid password and without agreement untick
 	When I am trying to enter firstname as '<Firstname>' lastname as '<Lastname>' email as '<Email>' & invalid password '<Pass>' without agree box ticked
 	Then I click Join button to sign up
 	Then I shoundn't be able to sign up
@@ -27,7 +28,7 @@ Scenario Outline: 4) Sing Up with invalid password and without agreement untick
 		| Iron      | man      | iron_man@gmai.com | 123  |
 
 @Join
-Scenario Outline: 5) Sing Up with valid password and with agreement tick
+Scenario Outline: 05) Sing Up with valid password and with agreement tick
 	When I am trying to enter firstname as '<Firstname>' lastname as '<Lastname>' email as '<Email>' & invalid password '<Pass>'
 	And I tick the agree box
 	Then I click Join to sign up
