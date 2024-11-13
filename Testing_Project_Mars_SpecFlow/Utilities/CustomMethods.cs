@@ -1,23 +1,61 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.BiDi.Modules.BrowsingContext;
 using OpenQA.Selenium.Support.UI;
+using System.Security.Cryptography.X509Certificates;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace Testing_Project_Mars_SpecFlow.Utilities
 {
     internal class CustomMethods
     {
-        public static void Click(IWebDriver driver, By locator)
+        public static void Click(IWebDriver driver, By locator, string clickType)
         {
-            CustomWait.WaitToBeClickable(driver, locator, 10);
-            try
+            switch (clickType)
             {
-                driver.FindElement(locator).Click();
+                case "just_click":
+                    try
+                    {
+                        driver.FindElement(locator).Click();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                    break;
+                case "wait_click":
+                    CustomWait.WaitToBeClickable(driver, locator, 15);
+                    try
+                    {
+                        driver.FindElement(locator).Click();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                    break;
+                default:
+                    throw new NotImplementedException();
             }
-            catch (Exception ex) 
-            {
-                Console.WriteLine(ex.ToString());
-            }
+                 
+            
+        }
+
+        //public static void JustClick(IWebDriver driver, By locator)
+        //{
+        //    try
+        //    {
+        //        driver.FindElement(locator).Click();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
+        //}
+
+        public static void ClosePopUp(IWebDriver driver)
+        {
+            Click(driver, By.XPath("//a[@class='ns-close']"), "wait_click");
         }
 
         public static void Submit(IWebDriver driver, By locator)
@@ -26,9 +64,25 @@ namespace Testing_Project_Mars_SpecFlow.Utilities
             driver.FindElement(locator).Submit();
         }
 
-        public static void Clear(IWebDriver driver, By locator)
+        public static void EnterTextPressEnter(IWebDriver driver, By locator, string text)
         {
-            driver.FindElement(locator).Clear();
+            CustomWait.WaitToBeClickable(driver, locator, 15);
+            var txtbox = driver.FindElement(locator);
+            try
+            {
+                txtbox.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            txtbox.Clear();
+            //might need another click
+            txtbox.SendKeys(text);
+
+            txtbox.SendKeys(Keys.Enter);
+
+            //txtbox.SendKeys(Keys.Tab);
         }
 
         public static void ClearEnterText(IWebDriver driver, By locator, string text)
@@ -63,6 +117,11 @@ namespace Testing_Project_Mars_SpecFlow.Utilities
             txtbox.SendKeys(text);
         }
 
+        public static void UploadFile(IWebDriver driver, By locator, string path)
+        { 
+            driver.FindElement(locator).SendKeys(path);
+            Thread.Sleep(1000);
+        }
 
         public static void AcceptAlert(IWebDriver driver)
         {
@@ -108,6 +167,45 @@ namespace Testing_Project_Mars_SpecFlow.Utilities
             var selectElement = new SelectElement(dropdown);
 
             selectElement.SelectByValue(value);
+        }
+
+        public static void CheckAndRemoveElement(IWebDriver driver, By locator, By removeLocator)
+        {
+            CustomWait.WaitToBeVisible(driver, locator, 10);
+            List<IWebElement> elements = new List<IWebElement>();
+
+            elements.AddRange(driver.FindElements(locator));
+            //Console.WriteLine(elements.Count());
+            foreach ( var _ in elements)
+            {
+                if (elements.Count > 0)
+                {
+                    driver.FindElement(removeLocator).Click();
+
+                }
+            }
+            
+        }
+
+        public static void EnterRandomEmail(IWebDriver driver, By locator, string firstName, string lastname)
+        {
+            CustomWait.WaitToBeVisible(driver, locator, 10);
+            var emailTxtbox = driver.FindElement(locator);
+
+            Random random = new Random();
+
+            int randomId = random.Next(0,1000);
+
+            try
+            {
+                emailTxtbox.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            emailTxtbox.SendKeys(firstName + "_" + lastname + randomId + "@gmail.com");
         }
     }
 }

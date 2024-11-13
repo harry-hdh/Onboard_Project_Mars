@@ -117,9 +117,11 @@ namespace Testing_Project_Mars_SpecFlow.Pages
             };
         }
 
-        public void ClickSpecific(IWebDriver driver, string location) 
+        public void ClickSpecific(IWebDriver driver, string location, string type) 
         {
-            CustomMethods.Click(driver, GetByLocation(location));
+            
+            CustomMethods.Click(driver, GetByLocation(location), type);
+                    
         }
 
         public void EnterTxt(IWebDriver driver, string location, string text) 

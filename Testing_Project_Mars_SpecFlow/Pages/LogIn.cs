@@ -14,7 +14,7 @@ namespace Testing_Project_Mars_SpecFlow.Pages
         private readonly By greetXpath = By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span");
         public void Login(IWebDriver driver, string email, string password)
         {
-            CustomMethods.Click(driver, By.XPath("//a[contains(text(), 'Sign In')]"));
+            CustomMethods.Click(driver, By.XPath("//a[contains(text(), 'Sign In')]"), "wait_click");
 
             //CustomMethods.SwitchToPopUp(driver, 0);
 
@@ -22,12 +22,12 @@ namespace Testing_Project_Mars_SpecFlow.Pages
 
             CustomMethods.EnterText(driver, By.Name("password"), password);
 
-            CustomMethods.Click(driver, By.XPath("//button[contains(text(), 'Login')]"));
+            CustomMethods.Click(driver, By.XPath("//button[contains(text(), 'Login')]"), "just_click");
         }
 
         public string RetriveGreet(IWebDriver driver) 
         {
-            CustomWait.WaitToBeVisible(driver, greetXpath, 10);
+            //CustomWait.WaitToBeVisible(driver, greetXpath, 10);
             var nameResult = CustomMethods.GetText(driver, greetXpath);
             return nameResult;
         }

@@ -124,7 +124,7 @@ this.ScenarioInitialize(scenarioInfo);
                 this.ScenarioStart();
 #line 12
  testRunner.When("I log into Project Mars website with existing account with email \'testing111@gmai" +
-                        "l.com\' & password as \'123QWEasd!@#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "l.com\' & password as \'123qweasd\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
  testRunner.Then("I should be able to log in and I should see my name displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -154,7 +154,7 @@ this.ScenarioInitialize(scenarioInfo);
                 this.ScenarioStart();
 #line 17
  testRunner.When("I log into Project Mars website with exist account with email \'testing111@gmail.c" +
-                        "om\' & password \'123QWEasd!@#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "om\' & password \'123qweasd\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
  testRunner.Then("I click Sign out button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -167,10 +167,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("4) Sing Up with invalid password and without agreement untick")]
+        [NUnit.Framework.DescriptionAttribute("04) Sing Up with invalid password and without agreement untick")]
         [NUnit.Framework.CategoryAttribute("Join")]
-        [NUnit.Framework.TestCaseAttribute("Iron", "man", "iron_man@gmai.com", "123", null)]
-        public void _4SingUpWithInvalidPasswordAndWithoutAgreementUntick(string firstname, string lastname, string email, string pass, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Iron", "man", "123", null)]
+        public void _04SingUpWithInvalidPasswordAndWithoutAgreementUntick(string firstname, string lastname, string pass, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Join"};
@@ -182,9 +182,8 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Firstname", firstname);
             argumentsOfScenario.Add("Lastname", lastname);
-            argumentsOfScenario.Add("Email", email);
             argumentsOfScenario.Add("Pass", pass);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4) Sing Up with invalid password and without agreement untick", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04) Sing Up with invalid password and without agreement untick", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -196,8 +195,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 23
- testRunner.When(string.Format("I am trying to enter firstname as \'{0}\' lastname as \'{1}\' email as \'{2}\' & invali" +
-                            "d password \'{3}\' without agree box ticked", firstname, lastname, email, pass), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I enter firstname as \'{0}\' lastname as \'{1}\' random email & invalid password \'{2}" +
+                            "\' without agree box ticked", firstname, lastname, pass), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 24
  testRunner.Then("I click Join button to sign up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -210,10 +209,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("5) Sing Up with valid password and with agreement tick")]
+        [NUnit.Framework.DescriptionAttribute("05) Sing Up with valid password and with agreement tick")]
         [NUnit.Framework.CategoryAttribute("Join")]
-        [NUnit.Framework.TestCaseAttribute("Iron", "man", "iron_man@gmai.com", "123qweasd", null)]
-        public void _5SingUpWithValidPasswordAndWithAgreementTick(string firstname, string lastname, string email, string pass, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Iron", "man", "123qweasd", null)]
+        public void _05SingUpWithValidPasswordAndWithAgreementTick(string firstname, string lastname, string pass, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Join"};
@@ -225,9 +224,8 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Firstname", firstname);
             argumentsOfScenario.Add("Lastname", lastname);
-            argumentsOfScenario.Add("Email", email);
             argumentsOfScenario.Add("Pass", pass);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5) Sing Up with valid password and with agreement tick", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05) Sing Up with valid password and with agreement tick", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 31
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -239,8 +237,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 32
- testRunner.When(string.Format("I am trying to enter firstname as \'{0}\' lastname as \'{1}\' email as \'{2}\' & invali" +
-                            "d password \'{3}\'", firstname, lastname, email, pass), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I am trying to enter firstname as \'{0}\' lastname as \'{1}\' random email & invalid " +
+                            "password \'{2}\'", firstname, lastname, pass), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 33
  testRunner.And("I tick the agree box", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

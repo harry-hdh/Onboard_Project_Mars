@@ -11,15 +11,16 @@ namespace Testing_Project_Mars_SpecFlow.Pages
 {
     internal class Join
     {
-        public void SignUp(IWebDriver driver, string firstname, string lastname, string email, string password) 
+        public void SignUp(IWebDriver driver, string firstname, string lastname, string password) 
         {
-            CustomMethods.Click(driver, By.XPath("//button[contains(text(), 'Join')]"));
+            CustomMethods.Click(driver, By.XPath("//button[contains(text(), 'Join')]"), "wait_click");
 
             CustomMethods.EnterText(driver, By.Name("firstName"), firstname);
 
             CustomMethods.EnterText(driver, By.Name("lastName"), lastname);
 
-            CustomMethods.EnterText(driver, By.Name("email"), email);
+            //CustomMethods.EnterText(driver, By.Name("email"), email);
+            CustomMethods.EnterRandomEmail(driver, By.Name("email"), firstname, lastname);
 
             CustomMethods.EnterText(driver, By.Name("password"), password);
 
@@ -29,12 +30,12 @@ namespace Testing_Project_Mars_SpecFlow.Pages
 
         public void TickAgreeBox(IWebDriver driver) 
         {
-            CustomMethods.Click(driver, By.Name("terms"));
+            CustomMethods.Click(driver, By.Name("terms"), "just_click");
         }
 
         public void ClickJoinBtn(IWebDriver driver)
         {
-            CustomMethods.Click(driver, By.Id("submit-btn"));
+            CustomMethods.Click(driver, By.Id("submit-btn"), "just_click");
         }
 
         public string RetriveWarningMsg(IWebDriver driver) 
