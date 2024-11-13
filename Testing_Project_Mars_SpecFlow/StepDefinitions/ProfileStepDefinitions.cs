@@ -33,7 +33,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I click on pencil icon button to enable description textbox")]
         public void WhenIClickOnPencilIconButtonToEnableDescriptionTextbox()
         {
-            profilePageObj.ClickSpecific(driver, "edit description");
+            profilePageObj.ClickSpecific(driver, "edit description", "wait_click");
         }
 
         [When(@"I enter random text to the textbox")]
@@ -45,13 +45,14 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I click the save button")]
         public void WhenIClickTheSaveButton()
         {
-            profilePageObj.ClickSpecific(driver, "save description");
+            profilePageObj.ClickSpecific(driver, "save description", "just_click");
         }
 
         [Then(@"My desctiption should be saved and display pop up success message")]
         public void ThenMyDesctiptionShouldBeSavedAndDisplayPopUpSuccessMessage()
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("successfully"), "Fail to save description!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "description").Equals("abc!@#"), "Fail to display description");
         }
 
@@ -59,7 +60,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I enable description textbox")]
         public void WhenIEnableDescriptionTextbox()
         {
-            profilePageObj.ClickSpecific(driver, "edit description");
+            profilePageObj.ClickSpecific(driver, "edit description", "wait_click");
         }
 
         [When(@"I enter a whitespace to the textbox")]
@@ -72,7 +73,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click save button")]
         public void ThenIClickSaveButton()
         {
-            profilePageObj.ClickSpecific(driver, "save description");
+            profilePageObj.ClickSpecific(driver, "save description", "just_click");
         }
 
         [Then(@"I should not be able to save the description and see warning message")]
@@ -85,7 +86,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I click on Add New button")]
         public void WhenIClickOnAddNewButton()
         {
-            profilePageObj.ClickSpecific(driver, "add new language");
+            profilePageObj.ClickSpecific(driver, "add new language", "wait_click");
         }
 
         [When(@"I enter language as '([^']*)' and select level as '([^']*)'")]
@@ -97,14 +98,16 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Add button")]
         public void ThenIClickAddButton()
         {
-            profilePageObj.ClickSpecific(driver, "add button");
+            profilePageObj.ClickSpecific(driver, "add button", "just_click");
         }
 
         [Then(@"I should be able to add new language successfully with '([^']*)' & '([^']*)'")]
         public void ThenIShouldBeAbleToAddNewLanguageSuccessfullyWith(string language, string level)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("added"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "language").Equals(language), "Fail to add new language!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "language level").Equals(level), "Fail to add new language level!");
         }
 
@@ -112,7 +115,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I click on edit icon button")]
         public void WhenIClickOnEditIconButton()
         {
-            profilePageObj.ClickSpecific(driver, "edit language btn");
+            profilePageObj.ClickSpecific(driver, "edit language btn", "wait_click");
         }
 
         [When(@"I update language as '([^']*)' and select level as '([^']*)'")]
@@ -125,14 +128,16 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Update button")]
         public void ThenIClickUpdateButton()
         {
-            profilePageObj.ClickSpecific(driver, "update button");
+            profilePageObj.ClickSpecific(driver, "update button", "just_click");
         }
 
         [Then(@"I should be able to update language successfully with '([^']*)' & '([^']*)'")]
         public void ThenIShouldBeAbleToUpdateLanguageSuccessfullyWith(string language, string level)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("updated"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "language").Equals(language), "Fail to edit language!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "language level").Equals(level), "Fail to edit language level!");
         }
 
@@ -140,7 +145,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I click on delete icon button")]
         public void WhenIClickOnDeleteIconButton()
         {
-            profilePageObj.ClickSpecific(driver, "remove language btn");
+            profilePageObj.ClickSpecific(driver, "remove language btn", "wait_click");
         }
 
         [Then(@"I should be able to delete language successfully")]
@@ -153,13 +158,13 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to skills sub-tab")]
         public void WhenINavigateToSkillsSub_Tab()
         {
-            profilePageObj.ClickSpecific(driver, "skills tab");
+            profilePageObj.ClickSpecific(driver, "skills tab", "wait_click");
         }
 
         [Then(@"I click on Add New button")]
         public void ThenIClickOnAddNewButton()
         {
-            profilePageObj.ClickSpecific(driver, "add new skill");
+            profilePageObj.ClickSpecific(driver, "add new skill", "wait_click");
         }
 
         [Then(@"I enter skill as '([^']*)' and select level as '([^']*)'")]
@@ -171,7 +176,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Add button to save skill")]
         public void ThenIClickAddButtonToSaveSkill()
         {
-            profilePageObj.ClickSpecific(driver, "add button");
+            profilePageObj.ClickSpecific(driver, "add button", "just_click");
         }
 
 
@@ -179,7 +184,9 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         public void ThenIShouldBeAbleToAddNewSkillSuccessfullyWith(string skill, string level)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("added"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "skill").Equals(skill), "Fail to add new skill!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "skill level").Equals(level), "Fail to add new skill level!");
         }
 
@@ -187,14 +194,14 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to skills sub-tab to edit skill")]
         public void WhenINavigateToSkillsSub_TabToEditSkill()
         {
-            profilePageObj.ClickSpecific(driver, "skills tab");
+            profilePageObj.ClickSpecific(driver, "skills tab", "wait_click");
 
         }
 
         [Then(@"I click on edit icon button")]
         public void ThenIClickOnEditIconButton()
         {
-            profilePageObj.ClickSpecific(driver, "edit skill btn");
+            profilePageObj.ClickSpecific(driver, "edit skill btn", "wait_click");
         }
 
         [Then(@"I update skill as '([^']*)' and select level as '([^']*)'")]
@@ -206,7 +213,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Update button to save skill")]
         public void ThenIClickUpdateButtonToSaveSkill()
         {
-            profilePageObj.ClickSpecific(driver, "update button");
+            profilePageObj.ClickSpecific(driver, "update button", "just_click");
         }
 
 
@@ -214,7 +221,9 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         public void ThenIShouldBeAbleToUpdateSkillSuccessfullyWith(string skill, string level)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("updated"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "skill").Equals(skill), "Fail to edit skill!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "skill level").Equals(level), "Fail to edit skill level!");
         }
 
@@ -222,14 +231,14 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to skills sub-tab to delete skill")]
         public void WhenINavigateToSkillsSub_TabToDeleteSkill()
         {
-            profilePageObj.ClickSpecific(driver, "skills tab");
+            profilePageObj.ClickSpecific(driver, "skills tab", "wait_click");
 
         }
 
         [Then(@"I click on delete icon button to delete skill")]
         public void WhenIClickOnDeleteIconButtonToDeleteSkill()
         {
-            profilePageObj.ClickSpecific(driver, "remove skill btn");
+            profilePageObj.ClickSpecific(driver, "remove skill btn", "wait_click");
         }
 
 
@@ -243,13 +252,13 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to education sub-tab")]
         public void WhenINavigateToEducationSub_Tab()
         {
-            profilePageObj.ClickSpecific(driver, "education tab");
+            profilePageObj.ClickSpecific(driver, "education tab", "wait_click");
         }
 
         [Then(@"I click on Add New button to add new education")]
         public void ThenIClickOnAddNewButtonToAddNewEducation()
         {
-            profilePageObj.ClickSpecific(driver, "add new education");
+            profilePageObj.ClickSpecific(driver, "add new education", "wait_click");
         }
 
 
@@ -263,17 +272,22 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Add button to save education")]
         public void ThenIClickAddButtonToSaveEducation()
         {
-            profilePageObj.ClickSpecific(driver, "add button");
+            profilePageObj.ClickSpecific(driver, "add button", "just_click");
         }
 
         [Then(@"I should be able to add new education successfully with '([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'")]
         public void ThenIShouldBeAbleToAddNewEducationSuccessfullyWith(string uni, string country, string title, string degree, string year)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("added"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "uni").Equals(uni), "Fail to add new education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "country").Equals(country), "Fail to add new education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "title").Equals(title), "Fail to add new education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "degree").Equals(degree), "Fail to add new education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "grad year").Equals(year), "Fail to add new education!");
 
         }
@@ -282,13 +296,13 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to education sub-tab to edit education")]
         public void WhenINavigateToEducationSub_TabToEditEducation()
         {
-            profilePageObj.ClickSpecific(driver, "education tab");
+            profilePageObj.ClickSpecific(driver, "education tab", "wait_click");
         }
 
         [Then(@"I click on edit icon button to edit education")]
         public void ThenIClickOnEditIconButtonToEditEducation()
         {
-            profilePageObj.ClickSpecific(driver, "edit education btn");
+            profilePageObj.ClickSpecific(driver, "edit education btn", "wait_click");
 
         }
 
@@ -302,7 +316,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Update button to update education")]
         public void ThenIClickUpdateButtonToUpdateEducation()
         {
-            profilePageObj.ClickSpecific(driver, "update button");
+            profilePageObj.ClickSpecific(driver, "update button", "just_click");
 
         }
 
@@ -310,10 +324,15 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         public void ThenIShouldBeAbleToEditNewEducationSuccessfullyWith(string uni, string country, string title, string degree, string year)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("updated"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "uni").Equals(uni), "Fail to edit education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "country").Equals(country), "Fail to add new education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "title").Equals(title), "Fail to edit education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "degree").Equals(degree), "Fail to edit education!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "grad year").Equals(year), "Fail to edit education!");
         }
 
@@ -321,14 +340,14 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to education sub-tab to delete education")]
         public void WhenINavigateToEducationSub_TabToDeleteEducation()
         {
-            profilePageObj.ClickSpecific(driver, "education tab");
+            profilePageObj.ClickSpecific(driver, "education tab", "wait_click");
 
         }
 
         [Then(@"I click on delete icon button to remove education")]
         public void WhenIClickOnDeleteIconButtonToRemoveEducation()
         {
-            profilePageObj.ClickSpecific(driver, "remove education btn");
+            profilePageObj.ClickSpecific(driver, "remove education btn", "wait_click");
 
         }
 
@@ -343,13 +362,13 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to Certifications sub-tab")]
         public void WhenINavigateToCertificationsSub_Tab()
         {
-            profilePageObj.ClickSpecific(driver, "cert tab");
+            profilePageObj.ClickSpecific(driver, "cert tab", "wait_click");
         }
 
         [Then(@"I click on Add New button to add certificate")]
         public void ThenIClickOnAddNewButtonToAddCertificate()
         {
-            profilePageObj.ClickSpecific(driver, "add new cert");
+            profilePageObj.ClickSpecific(driver, "add new cert", "wait_click");
 
         }
 
@@ -362,7 +381,7 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Add button to save certificate")]
         public void ThenIClickAddButtonToSaveCertificate()
         {
-            profilePageObj.ClickSpecific(driver, "add button");
+            profilePageObj.ClickSpecific(driver, "add button", "just_click");
 
         }
 
@@ -370,8 +389,11 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         public void ThenIShouldBeAbleToAddNewCertificateSuccessfullyWith(string award, string from, string year)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("added"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "award").Equals(award), "Fail to add new certification!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "from").Equals(from), "Fail to add new certification!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "cert year").Equals(year), "Fail to add new certification!");
         }
 
@@ -379,14 +401,14 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to Certifications sub-tab to edit certification")]
         public void WhenINavigateToCertificationsSub_TabToEditCertification()
         {
-            profilePageObj.ClickSpecific(driver, "cert tab");
+            profilePageObj.ClickSpecific(driver, "cert tab", "wait_click");
 
         }
 
         [Then(@"I click on edit icon button to update certification")]
         public void ThenIClickOnEditIconButtonToUpdateCertification()
         {
-            profilePageObj.ClickSpecific(driver, "edit cert btn");
+            profilePageObj.ClickSpecific(driver, "edit cert btn", "wait_click");
         }
 
         [Then(@"I update award as '([^']*)', from as '([^']*)', year as '([^']*)'")]
@@ -399,15 +421,18 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [Then(@"I click Update button to save certification")]
         public void ThenIClickUpdateButtonToSaveCertification()
         {
-            profilePageObj.ClickSpecific(driver, "update button");
+            profilePageObj.ClickSpecific(driver, "update button", "just_click");
         }
 
         [Then(@"I should be able to edit new education successfully with '([^']*)', '([^']*)', '([^']*)'")]
         public void ThenIShouldBeAbleToEditNewEducationSuccessfullyWith(string award, string from, string year)
         {
             Assert.That(profilePageObj.RetrivePopUpTxt(driver).Contains("updated"), "Fail to view success message!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "award").Equals(award), "Fail to edit certification!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "from").Equals(from), "Fail to edit certification!");
+
             Assert.That(profilePageObj.RetriveDisplayTxt(driver, "cert year").Equals(year), "Fail to edit certification!");
         }
 
@@ -415,13 +440,13 @@ namespace Testing_Project_Mars_SpecFlow.StepDefinitions
         [When(@"I navigate to education sub-tab to delete certification")]
         public void WhenINavigateToEducationSub_TabToDeleteCertification()
         {
-            profilePageObj.ClickSpecific(driver, "cert tab");
+            profilePageObj.ClickSpecific(driver, "cert tab", "wait_click");
         }
 
         [Then(@"I click on delete icon button to delete certification")]
         public void ThenIClickOnDeleteIconButtonToDeleteCertification()
         {
-            profilePageObj.ClickSpecific(driver, "remove cert btn");
+            profilePageObj.ClickSpecific(driver, "remove cert btn", "wait_click");
 
         }
 
